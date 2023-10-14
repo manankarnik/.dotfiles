@@ -8,6 +8,7 @@ local servers = {
   csharp_ls = { cmd = { "csharp-ls" } },
   rnix = { cmd = { "rnix-lsp" } },
   bashls = { cmd = { "bash-language-server", "start" } },
+  dartls = { cmd = { "dart", "language-server", "--protocol=lsp" } },
   lua_ls = {
     cmd = { "lua-language-server" },
     settings = {
