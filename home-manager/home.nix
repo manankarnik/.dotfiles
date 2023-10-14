@@ -46,6 +46,10 @@
       source = ../nvim;
       recursive = true;
     };
+    ".config/kitty" = {
+      source = ../kitty;
+      recursive = true;
+    };
   };
 
   # You can also manage environment variables but you will have to manually
