@@ -71,7 +71,7 @@
   users.users.manan = {
     isNormalUser = true;
     description = "Manan Karnik";
-    extraGroups = [ "networkmanager" "wheel" "audio" ];
+    extraGroups = [ "networkmanager" "wheel" "audio" "adbusers" ];
     packages = with pkgs; [ ];
   };
 
@@ -103,6 +103,7 @@
     fish.enable = true;
     starship.enable = true;
     git.enable = true;
+    adb.enable = true;
   };
 
   users.defaultUserShell = pkgs.fish;
