@@ -10,6 +10,8 @@
   home.packages =
     with pkgs; [
       dotnet-sdk
+      flutter
+      android-studio
       nodejs_20
       nodePackages.prettier
       nodePackages.pyright
