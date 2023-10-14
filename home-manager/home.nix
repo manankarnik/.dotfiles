@@ -74,6 +74,13 @@
       viAlias = true;
       defaultEditor = true;
     };
+    tmux = {
+      enable = true;
+      plugins = with pkgs; [
+        tmuxPlugins.sensible
+      ];
+      extraConfig = builtins.readFile (../tmux/tmux.conf);
+    };
   };
 
   gtk = {
