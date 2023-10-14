@@ -89,7 +89,7 @@
       size = 24;
     };
     theme = {
-      name = "Catppuccin-Mocha-Standard-Mauve-dark";
+      name = "Catppuccin-Mocha-Standard-Mauve-Dark";
       package = pkgs.catppuccin-gtk.override {
         accents = [ "mauve" ];
         size = "standard";

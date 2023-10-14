@@ -98,6 +98,7 @@
   };
 
   programs = {
+    dconf.enable = true;
     thunar.enable = true;
     fish.enable = true;
     starship.enable = true;
