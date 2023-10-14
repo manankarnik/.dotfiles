@@ -80,20 +80,23 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    wget
-    gcc
-    ripgrep
-    trash-cli
-    kitty
-    discord
-    wofi
-    wl-clipboard
-    pamixer
-  ];
+  environment = {
+    systemPackages = with pkgs; [
+      wget
+      gcc
+      ripgrep
+      trash-cli
+      kitty
+      discord
+      wofi
+      wl-clipboard
+      pamixer
+    ];
+    # Force wayland on electron apps
+    sessionVariables.NIXOS_OZONE_WL = "1";
+  };
 
   programs = {
-    hyprland.enable = true;
     thunar.enable = true;
     fish.enable = true;
     starship.enable = true;
