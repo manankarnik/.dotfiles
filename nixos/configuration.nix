@@ -84,11 +84,12 @@
     systemPackages = with pkgs; [
       wget
       gcc
+      jq
+      socat
+      libnotify
       ripgrep
       trash-cli
       kitty
-      discord
-      wofi
       wl-clipboard
       pamixer
     ];

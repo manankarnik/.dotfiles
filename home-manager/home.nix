@@ -22,15 +22,13 @@
       lua-language-server
       rnix-lsp
 
-      jq
-      socat
       swww
       sway-contrib.grimshot
-      libnotify
       eww-wayland
       spotify
+      discord
       chromium
-      rustup
+      wofi
       aseprite
       godot_4
       (blender.override {
