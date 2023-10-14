@@ -1,0 +1,73 @@
+(defpoll datetime :interval "1s" `date +"%T %d %m %Y"`)
+(deflisten workspaces :initial "{}" "scripts/workspaces.sh")
+(deflisten volume "scripts/volume.sh")
+(defvar volume_slider false)
+
+(defwindow bar
+  :monitor 0
+  :geometry (geometry :x "1%"
+                      :y "1%"
+                      :width "99%"
+                      :height "4%"
+                      :anchor "top center")
+  :stacking "fg"
+  :exclusive true
+  (bar))
+
+(defwidget bar []
+  (centerbox :class "bar"
+             :orientation "h"
+             (left)
+             (center)
+             (right)))
+
+(defwidget left []
+  (box :halign "start"
+       (workspaces)))
+
+(defwidget center [] (label :limit-width 100 :tooltip "${workspaces.title}" :text "${workspaces.title}"))
+
+(defwidget right []
+  (box :halign "end"
+       :space-evenly false
+       :spacing 12
+       (ram) (cpu) (volume) (datetime)))
+
+
+(defwidget datetime [] (eventbox :onhover "eww open calendar" "${substring(datetime, 0, 8)}"))
+(defwidget ram [] (box :space-evenly false :spacing 4 " " "${round(EWW_RAM.used_mem_perc, 1)}%"))
+
+(defwidget cpu [] (box :space-evenly false :spacing 4 " " "${round(EWW_CPU.avg, 1)}%"))
+
+
+(defwidget workspaces []
+  (box :class "workspaces"
+    (for workspace in "${workspaces.workspaces}"
+        (button
+          :tooltip "Windows: ${workspace.windows}"
+          :class "${workspace.id == workspaces.active ? 'active-workspace' : workspace.windows == 0 ? 'empty-workspace' : 'workspace'}"
+          :onclick "hyprctl dispatch workspace ${workspace.id} > /dev/null"
+          "${workspace.id == workspaces.active ? '' : workspace.windows == 0 ? '' : ''}"))))
+
+(defwidget volume []
+  (box :space-evenly false :spacing 4 :tooltip "Volume: ${volume == 'muted' ? volume : '${volume}%'}"
+  (button :onclick "pamixer -t" "${volume == "muted" || volume == "0" ? '󰝟' : volume < 50 ? '󰖀': '󰕾'}")
+  (scale :orientation "h" 
+         :min 0 
+         :max 101 
+         :value volume 
+         :marks true
+         :onchange "pamixer --set-volume {}")))
+
+(defwindow calendar
+  :monitor 0 
+  :geometry (geometry :x "0.55%" :y "-0.2%" :width "15%" :height "15%" :anchor "top right")
+  (eventbox 
+  :onhoverlost "eww close calendar"
+(box  :class "cal" (calendar :day calendar_day 
+			  :month calendar_month 
+			  :year calendar_year))))
+(defpoll calendar_day :interval "10h"
+    "date '+%d'")
+(defpoll calendar_month :interval "10h" "date +%m")
+(defpoll calendar_year :interval "10h" "date '+%Y'")

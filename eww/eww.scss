@@ -1,0 +1,97 @@
+$rosewater: #f5e0dc;
+$flamingo: #f2cdcd;
+$pink: #f5c2e7;
+$mauve: #cba6f7;
+$red: #f38ba8;
+$maroon: #eba0ac;
+$peach: #fab387;
+$yellow: #f9e2af;
+$green: #a6e3a1;
+$teal: #94e2d5;
+$sky: #89dceb;
+$sapphire: #74c7ec;
+$blue: #89b4fa;
+$lavender: #b4befe;
+$text: #cdd6f4;
+$subtext1: #bac2de;
+$subtext0: #a6adc8;
+$overlay2: #9399b2;
+$overlay1: #7f849c;
+$overlay0: #6c7086;
+$surface2: #585b70;
+$surface1: #45475a;
+$surface0: #313244;
+$base: #1e1e2e;
+$mantle: #181825;
+$crust: #11111b;
+
+* {
+  background-color: transparent;
+  font-family: "monospace";
+}
+button, scale, scale * {
+  all: unset;
+}
+tooltip {
+  padding: 0 4rem;
+  border: 2px solid $surface0;
+  background-color: $base;
+}
+
+button {
+  padding: 0.5rem;
+}
+
+scale trough {
+  background-color: $surface0;
+  min-height: 8px;
+  min-width: 50px;
+  border-radius: 5px;
+}
+
+trough highlight {
+  background-color: $flamingo;
+  border-radius: 5px;
+}
+
+trough fill {
+  background-color: $pink;
+  border-radius: 5px;
+}
+
+.bar {
+  padding: 0 1rem;
+  background-color: rgba($base, 0);
+  border: 2px solid $lavender;
+  color: $text;
+}
+
+.workspaces .workspace,
+.active-workspace {
+  color: $flamingo;
+}
+
+.workspaces .empty-workspace {
+  color: $surface2;
+}
+
+.cal{
+  border: 2px solid $lavender;
+}
+
+calendar {
+  font-weight: bold;
+  padding: 0.2rem;
+}
+
+calendar:selected {
+  color: $maroon;
+}
+
+calendar.header {
+  color: $lavender;
+}
+
+calendar.highlight {
+  color: $flamingo;
+}

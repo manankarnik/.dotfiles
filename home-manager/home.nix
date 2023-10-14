@@ -79,6 +79,11 @@
       ];
       extraConfig = builtins.readFile (../tmux/tmux.conf);
     };
+    eww = {
+      enable = true;
+      package = pkgs.eww-wayland;
+      configDir = ../eww;
+    };
   };
 
   services.dunst.enable = true;
