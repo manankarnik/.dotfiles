@@ -113,10 +113,14 @@
   nixpkgs.config.pulseaudio = true;
 
 
-  fonts.packages = with pkgs; [
-    noto-fonts-emoji
-    (nerdfonts.override { fonts = [ "FiraCode" ]; })
-  ];
+  fonts.packages = with pkgs;
+    [
+      corefonts
+      noto-fonts-emoji
+      (nerdfonts.override {
+        fonts = [ "FiraCode" ];
+      })
+    ];
 
   # Enable OpenGL
   hardware.opengl = {
