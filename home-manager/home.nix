@@ -9,6 +9,7 @@
   # environment.
   home.packages =
     with pkgs; [
+      rustup
       dotnet-sdk
       flutter
       android-studio
@@ -26,6 +27,7 @@
 
       swww
       sway-contrib.grimshot
+      xdg-desktop-portal-hyprland
       eww-wayland
       spotify
       discord
@@ -37,6 +39,7 @@
         cudaSupport = true;
       })
       pureref
+      libreoffice
     ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
