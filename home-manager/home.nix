@@ -10,9 +10,7 @@
   home.packages =
     with pkgs; [
       rustup
-      dotnet-sdk
-      flutter
-      android-studio
+      bun
       nodejs_20
       nodePackages.prettier
       nodePackages.pyright
@@ -33,6 +31,7 @@
       discord
       chromium
       wofi
+      fzf
       aseprite
       godot_4
       (blender.override {
