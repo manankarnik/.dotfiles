@@ -3,7 +3,24 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { inputs, lib, config, pkgs, ... }:
+let
+  configure-gtk = pkgs.writeTextFile {
+    name = "configure-gtk";
+    destination = "/bin/configure-gtk";
+    executable = true;
+    text =
+      let
+        schema = pkgs.gsettings-desktop-schemas;
+        datadir = "${schema}/share/gsettings-schemas/${schema.name}";
+      in
+      ''
+        export XDG_DATA_DIRS=${datadir}:$XDG_DATA_DIRS
+        gnome_schema=org.gnome.desktop.interface
+        gsettings set $gnome_schema gtk-theme 'Dracula'
+      '';
+  };
 
+in
 {
   imports = [
     # Include the results of the hardware scan.
@@ -23,6 +40,7 @@
 
   # Set your time zone.
   time.timeZone = "Asia/Kolkata";
+  time.hardwareClockInLocalTime = true;
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -82,6 +100,8 @@
   # $ nix search wget
   environment = {
     systemPackages = with pkgs; [
+      configure-gtk
+      glib
       wget
       gcc
       jq
@@ -108,14 +128,18 @@
 
   users.defaultUserShell = pkgs.fish;
 
-  # Pulseaudio
-  hardware.pulseaudio.enable = true;
-  nixpkgs.config.pulseaudio = true;
-
+  # rtkit is optional but recommended
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
 
   fonts.packages = with pkgs;
     [
-      corefonts
+      liberation_ttf
       noto-fonts-emoji
       (nerdfonts.override {
         fonts = [ "FiraCode" ];
