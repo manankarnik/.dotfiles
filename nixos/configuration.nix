@@ -31,6 +31,7 @@ in
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = [ "ntfs" ];
+  boot.kernelModules = [ "v4l2loopback-dc" "snd-aloop" ];
 
   # Define your hostname.
   networking.hostName = "nixos";
@@ -102,6 +103,8 @@ in
     systemPackages = with pkgs; [
       configure-gtk
       glib
+      grim
+      slurp
       wget
       gcc
       jq
@@ -112,6 +115,8 @@ in
       kitty
       wl-clipboard
       pamixer
+      pulseaudio
+      pavucontrol
     ];
     # Force wayland on electron apps
     sessionVariables.NIXOS_OZONE_WL = "1";
@@ -124,6 +129,13 @@ in
     starship.enable = true;
     git.enable = true;
     adb.enable = true;
+  };
+
+  services.xserver = {
+    enable = true;
+    autorun = false;
+    displayManager.startx.enable = true;
+    desktopManager.xterm.enable = false;
   };
 
   users.defaultUserShell = pkgs.fish;
@@ -139,6 +151,7 @@ in
 
   fonts.packages = with pkgs;
     [
+      vistafonts
       liberation_ttf
       noto-fonts-emoji
       (nerdfonts.override {
@@ -153,20 +166,26 @@ in
     driSupport32Bit = true;
   };
 
-  # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = [ "nvidia" ];
+  virtualisation.virtualbox.host.enable = true;
+  # virtualisation.virtualbox.guest.enable = true;
+  # virtualisation.virtualbox.guest.x11 = true;
+  users.extraGroups.vboxusers.members = [ "manan" ];
 
-  hardware.nvidia = {
-    # Modesetting is required.
-    modesetting.enable = true;
-
-    # Enable the Nvidia settings menu,
-    # accessible via `nvidia-settings`.
-    nvidiaSettings = true;
-
-    # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-  };
+  services.xserver.videoDrivers = [ "xf86-video-intel" ];
+  #   # Load nvidia driver for Xorg and Wayland
+  #   services.xserver.videoDrivers = [ "nvidia" ];
+  # 
+  #   hardware.nvidia = {
+  #     # Modesetting is required.
+  #     modesetting.enable = true;
+  # 
+  #     # Enable the Nvidia settings menu,
+  #     # accessible via `nvidia-settings`.
+  #     nvidiaSettings = true;
+  # 
+  #     # Optionally, you may need to select the appropriate driver version for your specific GPU.
+  #     package = config.boot.kernelPackages.nvidiaPackages.stable;
+  #   };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

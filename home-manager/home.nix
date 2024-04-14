@@ -19,26 +19,24 @@
       nodePackages.svelte-language-server
       nodePackages.bash-language-server
       tailwindcss
-      csharp-ls
       lua-language-server
-      rnix-lsp
+      # rnix-lsp
 
       swww
       sway-contrib.grimshot
-      xdg-desktop-portal-hyprland
-      eww-wayland
+      xdg-desktop-portal
       spotify
       discord
-      chromium
-      wofi
       fzf
-      aseprite
-      godot_4
-      (blender.override {
-        cudaSupport = true;
-      })
-      pureref
-      libreoffice
+      droidcam
+      flameshot
+      obs-studio
+      xclip
+      scrot
+      vscode
+      unzip
+      brightnessctl
+      tree
     ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -85,12 +83,24 @@
     };
     eww = {
       enable = true;
-      package = pkgs.eww-wayland;
       configDir = ../eww;
     };
+    direnv.enable = true;
+    chromium.enable = true;
+    firefox.enable = true;
+    rofi.enable = true;
   };
 
   services.dunst.enable = true;
+
+  xsession.windowManager.bspwm = {
+      enable = true;
+      extraConfig = builtins.readFile (../bspwm/bspwmrc);
+    };
+  services.sxhkd = {
+    enable = true;
+    extraConfig = builtins.readFile (../sxhkd/sxhkdrc);
+  };
 
   gtk = {
     enable = true;

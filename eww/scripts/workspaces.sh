@@ -11,6 +11,6 @@ workspaces() {
 }
 
 workspaces
-socat -u UNIX-CONNECT:/tmp/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock - | while read -r line; do
-  workspaces
+  bspc subscribe desktop node_transfer | while read -r _ ; do
+workspaces
 done

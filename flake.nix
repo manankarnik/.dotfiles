@@ -7,7 +7,6 @@
       url = github:nix-community/home-manager;
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland.url = "github:hyprwm/Hyprland";
   };
 
   outputs = { self, nixpkgs, home-manager, hyprland, ... } @inputs:
@@ -33,16 +32,7 @@
           # Home-manager requires 'pkgs' instance
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs; };
-          modules = [ 
-            ./home-manager/home.nix 
-            hyprland.homeManagerModules.default
-            {
-              wayland.windowManager.hyprland = {
-                enable = true; 
-		extraConfig = builtins.readFile( ./hypr/hyprland.conf );
-              };
-            }
-          ];
+          modules = [ ./home-manager/home.nix ];
         };
       };
     };

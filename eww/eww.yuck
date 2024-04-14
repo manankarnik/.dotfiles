@@ -4,15 +4,16 @@
 (defvar volume_slider false)
 
 (defwindow bar
-  :monitor 0
-  :geometry (geometry :x "1%"
-                      :y "1%"
-                      :width "99%"
-                      :height "4%"
-                      :anchor "top center")
-  :stacking "fg"
-  :exclusive true
-  (bar))
+:monitor 0
+:geometry (geometry 
+            :width "100%"
+            :height "4%"
+            :anchor "top center")
+:windowtype "dock"
+:reserve (struts :distance "40px" :side "top")
+:exclusive true
+:wm-ignore true
+(bar))
 
 (defwidget bar []
   (centerbox :class "bar"
@@ -54,7 +55,7 @@
   (button :onclick "pamixer -t" "${volume == "muted" || volume == "0" ? '󰝟' : volume < 50 ? '󰖀': '󰕾'}")
   (scale :orientation "h" 
          :min 0 
-         :max 101 
+         :max 154 
          :value volume 
          :marks true
          :onchange "pamixer --set-volume {}")))
