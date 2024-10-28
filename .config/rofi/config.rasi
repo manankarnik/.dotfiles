@@ -1,0 +1,12 @@
+configuration {
+    font: "MonacoLigaturized Nerd Font Mono Bold 16";
+    show-icons: true;
+    drun-display-format: "{icon} {name}";
+    display-run: "";
+    display-drun: "󱕷";
+    display-window: "";
+    display-combi: "";
+    modi: "window,run,drun,combi";
+}
+
+@theme "theme.rasi"
