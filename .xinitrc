@@ -1,0 +1,3 @@
+flameshot &
+nitrogen --restore &
+bspwm
