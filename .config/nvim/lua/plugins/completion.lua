@@ -92,9 +92,11 @@ return {
 						luasnip.expand_or_jump()
 					end
 				end, { "i", "s" }),
-				["<C-h>"] = cmp.mapping(function()
+				["<C-h>"] = cmp.mapping(function(fallback)
 					if luasnip.locally_jumpable(-1) then
 						luasnip.jump(-1)
+					else
+						fallback()
 					end
 				end, { "i", "s" }),
 
