@@ -1,9 +1,9 @@
 -- Set up a custom color scheme for a personalized editing experience.
 return {
-	"rose-pine/nvim",
-	name = "rose-pine",
+	"catppuccin/nvim",
+	name = "catppuccin",
 	priority = 1000,
 	config = function()
-		vim.cmd.colorscheme("rose-pine")
+		vim.cmd.colorscheme("catppuccin")
 	end,
 }
