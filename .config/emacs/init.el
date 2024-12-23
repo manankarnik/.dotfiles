@@ -9,6 +9,7 @@
 
 ;; Configure Backups
 (setq backup-directory-alist '(("." . "~/.config/emacs/saves")))
+(setq backup-by-copying t) ; Fixes LSP Auto Import Issues
 
 ;; Custom File
 (setq custom-file "~/.config/emacs/emacs-custom.el")
