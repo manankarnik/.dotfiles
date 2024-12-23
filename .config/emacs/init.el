@@ -106,13 +106,12 @@
 ;; Completion
 (use-package company
   :config (global-company-mode)
-  :custom ((company-minimum-prefix-length 1)
-	   (company-tooltip-align-annotations t)
-	   (company-idle-delay 0)
+  :bind ("C-c C-c" . company-complete)
+  :custom ((company-tooltip-align-annotations t)
 	   (company-format-margin-function 'company-text-icons-margin)
 	   (company-text-face-extra-attributes '(:weight bold :slant italic))
 	   (company-backends '(company-capf company-yasnippet company-keywords company-files company-elisp company-ispell company-semantic))
-	   (company-frontends '(company-preview-frontend company-pseudo-tooltip-frontend company-echo-metadata-frontend))))
+	   (company-frontends '(company-preview-frontend company-pseudo-tooltip-frontend))))
 ;; Update Theme
 (custom-set-faces '(company-tooltip ((t (:foreground "#cdd6f4" :background "#181825" :weight bold))))
 		  '(company-tooltip-selection ((t (:background "#313244"))))
@@ -123,7 +122,9 @@
 		  '(company-preview-search ((t (:foreground "#6c7086" :background "#1e1e2e"))))
 		  '(company-tooltip-search ((t (:foreground "#89b4fa"))))
 		  '(company-tooltip-search-selection ((t (:background "#89b4fa")))))
-(global-set-key (kbd "C-c C-c") 'company-complete)
+
+;; Disable DAP UI Controls
+(setq dap-auto-configure-features '((sessions locals breakpoints expressions tooltip)))
 
 ;; LSP
 (use-package lsp-mode
