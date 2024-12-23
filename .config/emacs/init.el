@@ -46,6 +46,12 @@
 (use-package doom-modeline
   :init (doom-modeline-mode))
 
+;; Indent Guides
+(use-package highlight-indent-guides
+  :hook (prog-mode-hook . highlight-indent-guides-mode)
+  :custom ((highlight-indent-guides-method 'bitmap)
+	   (highlight-indent-guides-auto-character-face-perc 70)))
+
 ;; Multiple Cursors
 (use-package multiple-cursors)
 (global-set-key (kbd "C-c e") 'mc/edit-lines)
