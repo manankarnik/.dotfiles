@@ -127,17 +127,17 @@
 
 ;; LSP
 (use-package lsp-mode
-  :commands (lsp lsp-deferred)
-  :init (setq lsp-keymap-prefix "C-c l")
+  :commands lsp
+  :init (setq lsp-keymap-prefix "C-c l"
+	      lsp-headerline-breadcrumb-enable nil)
   :hook (lsp-mode . lsp-enable-which-key-integration))
 ;; Just Kill the Process
 (setq confirm-kill-processes nil)
 
 ;; Dart
 (use-package dart-mode
-  :hook (dart-mode . lsp-deferred)
-  :custom (dart-format-on-save t))
-(use-package hover)
+  :config (setq lsp-dart-dap-flutter-hot-reload-on-save t)
+  :hook (dart-mode . lsp))
 
 (provide 'init)
 ;;; init.el ends here
