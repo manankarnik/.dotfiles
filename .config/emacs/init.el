@@ -139,5 +139,9 @@
   :config (setq lsp-dart-dap-flutter-hot-reload-on-save t)
   :hook (dart-mode . lsp))
 
+;; YAML
+(use-package yaml-mode
+  :config (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode)))
+
 (provide 'init)
 ;;; init.el ends here
