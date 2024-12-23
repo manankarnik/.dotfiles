@@ -59,12 +59,12 @@
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
-;; Helm
-(use-package helm
-  :config (helm-mode))
+;; Swiper
+(use-package swiper
+  :bind ("C-s" . swiper))
 
 ;; Ido & Smex
-(ido-mode)
+(ido-mode t)
 (use-package smex)
 (global-set-key (kbd "M-x") 'smex)
 
