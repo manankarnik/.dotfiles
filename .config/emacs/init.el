@@ -15,6 +15,9 @@
 (setq custom-file "~/.config/emacs/emacs-custom.el")
 (load-file custom-file)
 
+;; Scroll Compilation Output
+(setq compilation-scroll-output t)
+
 ;; UI Tweaks
 (tool-bar-mode 0)
 (menu-bar-mode 0)
@@ -55,6 +58,7 @@
 ;; Multiple Cursors
 (use-package multiple-cursors)
 (global-set-key (kbd "C-c e") 'mc/edit-lines)
+(global-set-key (kbd "C-.") 'mc/mark-next-like-this-word)
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
