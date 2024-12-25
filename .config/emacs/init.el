@@ -25,8 +25,11 @@
 (column-number-mode)
 (display-time-mode)
 
-;; Editing Enhancements
+;; Editing Preferences
 (delete-selection-mode)
+(setq-default tab-width 4)
+(setq-default indent-tabs-mode nil)
+(setq-default c-basic-offset 4)
 
 ;; Line Numbers
 (global-display-line-numbers-mode)
