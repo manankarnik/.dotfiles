@@ -147,6 +147,8 @@
   :config (setq lsp-dart-dap-flutter-hot-reload-on-save t)
   :hook (dart-mode . lsp))
 
+;; Rust
+(use-package rust-mode)
 ;; YAML
 (use-package yaml-mode
   :config (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode)))
