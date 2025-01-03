@@ -4,36 +4,29 @@
 ;; This is my personal Emacs configuration file.
 
 ;;; Code:
-;; Disable Startup Message
+;; General Settings
 (setq inhibit-startup-message t)
-
-;; Configure Backups
+(setq compilation-scroll-output t)
+(setq shell-file-name "/bin/bash")
+(setq backup-by-copying t)
 (setq backup-directory-alist '(("." . "~/.config/emacs/saves")))
-(setq backup-by-copying t) ; Fixes LSP Auto Import Issues
-
-;; Custom File
 (setq custom-file "~/.config/emacs/emacs-custom.el")
 (load-file custom-file)
 
-;; Scroll Compilation Output
-(setq compilation-scroll-output t)
-
-;; UI Tweaks
+;; User Interface
 (tool-bar-mode 0)
 (menu-bar-mode 0)
 (scroll-bar-mode 0)
 (column-number-mode)
 (display-time-mode)
+(setq display-line-numbers-type 'relative)
+(global-display-line-numbers-mode)
 
 ;; Editing Preferences
 (delete-selection-mode)
 (setq-default tab-width 4)
 (setq-default indent-tabs-mode nil)
 (setq-default c-basic-offset 4)
-
-;; Line Numbers
-(global-display-line-numbers-mode)
-(setq display-line-numbers-type 'relative)
 
 ;; Initialize Packages
 (require 'package)
@@ -46,7 +39,7 @@
 ;; Font and Appearance
 (set-face-attribute 'default nil :font "Space Mono Nerd Font" :height 150)
 (use-package catppuccin-theme
-  :init (load-theme 'catppuccin :no-confirm))
+  :config (load-theme 'catppuccin :no-confirm))
 
 ;; Modeline
 (use-package doom-modeline
@@ -60,10 +53,10 @@
 
 ;; Multiple Cursors
 (use-package multiple-cursors)
-(global-set-key (kbd "C-c e") 'mc/edit-lines)
-(global-set-key (kbd "C-.") 'mc/mark-next-like-this-word)
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c e")   'mc/edit-lines)
+(global-set-key (kbd "C-.")     'mc/mark-next-like-this-word)
+(global-set-key (kbd "C->")     'mc/mark-next-like-this)
+(global-set-key (kbd "C-<")     'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
 ;; Swiper
@@ -149,6 +142,7 @@
 
 ;; Rust
 (use-package rust-mode)
+
 ;; YAML
 (use-package yaml-mode
   :config (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode)))
