@@ -43,7 +43,7 @@
 
 ;; Modeline
 (use-package doom-modeline
-  :init (doom-modeline-mode))
+  :config (doom-modeline-mode))
 
 ;; Multiple Cursors
 (use-package multiple-cursors)
@@ -105,11 +105,10 @@
 ;; LSP
 (use-package lsp-mode
   :commands lsp
-  :init (setq lsp-keymap-prefix "C-c l"
-	      lsp-headerline-breadcrumb-enable nil)
+  :config (setq lsp-keymap-prefix "C-c l"
+                lsp-headerline-breadcrumb-enable nil
+                confirm-kill-processes nil)
   :hook (lsp-mode . lsp-enable-which-key-integration))
-;; Just Kill the Process
-(setq confirm-kill-processes nil)
 
 ;; Dart
 (use-package dart-mode
