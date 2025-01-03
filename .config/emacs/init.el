@@ -82,22 +82,11 @@
 ;; Completion
 (use-package company
   :config (global-company-mode)
-  :bind ("C-c C-c" . company-complete)
+  :bind ("C-c c" . company-complete)
   :custom ((company-tooltip-align-annotations t)
-	   (company-format-margin-function 'company-text-icons-margin)
-	   (company-text-face-extra-attributes '(:weight bold :slant italic))
-	   (company-backends '(company-capf company-yasnippet company-keywords company-files company-elisp company-ispell company-semantic))
-	   (company-frontends '(company-preview-frontend company-pseudo-tooltip-frontend))))
-;; Update Theme
-(custom-set-faces '(company-tooltip ((t (:foreground "#cdd6f4" :background "#181825" :weight bold))))
-		  '(company-tooltip-selection ((t (:background "#313244"))))
-		  '(company-tooltip-annotation ((t (:foreground "#6c7086" :weight normal :slant italic))))
-		  '(company-tooltip-annotation-selection ((t (:weight normal :slant italic))))
-		  '(company-preview ((t (:foreground "#6c7086" :background "#1e1e2e"))))
-		  '(company-preview-common ((t (:foreground "#6c7086" :background "#1e1e2e"))))
-		  '(company-preview-search ((t (:foreground "#6c7086" :background "#1e1e2e"))))
-		  '(company-tooltip-search ((t (:foreground "#89b4fa"))))
-		  '(company-tooltip-search-selection ((t (:background "#89b4fa")))))
+	       (company-format-margin-function 'company-text-icons-margin)
+           (company-backends '(company-files company-yasnippet company-capf company-dabbrev))
+           (company-frontends '(company-preview-frontend company-pseudo-tooltip-frontend company-echo-metadata-frontend))))
 
 ;; Disable DAP UI Controls
 (setq dap-auto-configure-features '((sessions locals breakpoints expressions tooltip)))
