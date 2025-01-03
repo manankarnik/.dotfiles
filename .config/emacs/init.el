@@ -45,12 +45,6 @@
 (use-package doom-modeline
   :init (doom-modeline-mode))
 
-;; Indent Guides
-(use-package highlight-indent-guides
-  :hook (prog-mode-hook . highlight-indent-guides-mode)
-  :custom ((highlight-indent-guides-method 'bitmap)
-	   (highlight-indent-guides-auto-character-face-perc 70)))
-
 ;; Multiple Cursors
 (use-package multiple-cursors)
 (global-set-key (kbd "C-c e")   'mc/edit-lines)
@@ -58,10 +52,6 @@
 (global-set-key (kbd "C->")     'mc/mark-next-like-this)
 (global-set-key (kbd "C-<")     'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-
-;; Swiper
-(use-package swiper
-  :bind ("C-s" . swiper))
 
 ;; Ido & Smex
 (ido-mode t)
@@ -79,24 +69,10 @@
          (tree-sitter-after-on . tree-sitter-hl-mode)))
 (use-package tree-sitter-langs)
 
-;; Flycheck
-(use-package flycheck
-  :config (global-flycheck-mode))
-
-;; Rainbow Delimiters
-(use-package rainbow-delimiters
-  :hook (prog-mode . rainbow-delimiters-mode))
-
 ;; Magit
 (use-package magit
   :commands magit-status
   :bind ("C-x g" . magit-status))
-
-;; Git Signs
-(use-package diff-hl
-  :hook ((prog-mode . diff-hl-mode)
-	 (prog-mode . diff-hl-flydiff-mode)
-	 (magit-post-refresh . diff-hl-magit-post-refresh)))
 
 ;; Snippets
 (use-package yasnippet
