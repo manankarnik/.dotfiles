@@ -37,7 +37,7 @@
 (require 'use-package)
 
 ;; Font and Appearance
-(set-face-attribute 'default nil :font "Space Mono Nerd Font" :height 150)
+(set-face-attribute 'default nil :font "CodeNewRoman Nerd Font Mono" :height 150)
 (use-package catppuccin-theme
   :config (load-theme 'catppuccin :no-confirm))
 
