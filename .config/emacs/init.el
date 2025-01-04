@@ -82,10 +82,10 @@
 ;; Completion
 (use-package company
   :config (global-company-mode)
-  :bind ("C-c c" . company-complete)
+  :bind ("C-c C-SPC" . company-other-backend)
   :custom ((company-tooltip-align-annotations t)
-	       (company-format-margin-function 'company-text-icons-margin)
-           (company-backends '(company-files company-yasnippet company-capf company-dabbrev))
+           (company-format-margin-function 'company-text-icons-margin)
+           (company-backends '(company-files company-capf company-yasnippet company-dabbrev-code company-dabbrev))
            (company-frontends '(company-preview-frontend company-pseudo-tooltip-frontend company-echo-metadata-frontend))))
 
 ;; Disable DAP UI Controls
