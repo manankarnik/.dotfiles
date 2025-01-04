@@ -64,10 +64,10 @@
   :config (setq which-key-idle-delay 0.5))
 
 ;; Tree Sitter
-(use-package tree-sitter
-  :hook ((prog-mode . tree-sitter-mode)
-         (tree-sitter-after-on . tree-sitter-hl-mode)))
-(use-package tree-sitter-langs)
+(use-package treesit-auto
+  :custom ((treesit-auto-install 'prompt)
+           (treesit-auto-add-to-auto-mode-alist 'all))
+  :config (global-treesit-auto-mode))
 
 ;; Magit
 (use-package magit
