@@ -110,5 +110,13 @@
 (use-package yaml-mode
   :config (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode)))
 
+;; Typst
+(unless (package-installed-p 'typst-ts-mode)
+  (package-vc-install "https://codeberg.org/meow_king/typst-ts-mode.git"))
+(use-package typst-ts-mode
+  :custom ((typst-ts-mode-enable-raw-blocks-highlight t)
+           (typst-ts-mode-grammar-location (expand-file-name "tree-sitter/libtree-sitter-typst.so" user-emacs-directory)))
+  :config (keymap-set typst-ts-mode-map "C-c C-c" #'typst-ts-tmenu))
+
 (provide 'init)
 ;;; init.el ends here
