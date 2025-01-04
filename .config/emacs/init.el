@@ -88,9 +88,6 @@
            (company-backends '(company-files company-capf company-yasnippet company-dabbrev-code company-dabbrev))
            (company-frontends '(company-preview-frontend company-pseudo-tooltip-frontend company-echo-metadata-frontend))))
 
-;; Disable DAP UI Controls
-(setq dap-auto-configure-features '((sessions locals breakpoints expressions tooltip)))
-
 ;; LSP
 (use-package lsp-mode
   :commands lsp
@@ -101,8 +98,10 @@
 
 ;; Dart
 (use-package dart-mode
-  :config (setq lsp-dart-dap-flutter-hot-reload-on-save t)
-  :hook (dart-mode . lsp))
+  :config (use-package lsp-dart
+            :config (setq lsp-dart-dap-flutter-hot-reload-on-save t
+                          dap-auto-configure-features '((sessions locals breakpoints expressions tooltip)))
+            :hook (dart-mode . lsp)))
 
 ;; Rust
 (use-package rust-mode)
