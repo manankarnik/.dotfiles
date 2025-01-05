@@ -88,6 +88,10 @@
            (company-backends '(company-files company-capf company-yasnippet company-dabbrev-code company-dabbrev))
            (company-frontends '(company-preview-frontend company-pseudo-tooltip-frontend company-echo-metadata-frontend))))
 
+;; Flycheck
+(use-package flycheck
+  :config (global-flycheck-mode))
+
 ;; LSP
 (use-package lsp-mode
   :commands lsp
@@ -119,4 +123,9 @@
   :config (keymap-set typst-ts-mode-map "C-c C-c" #'typst-ts-tmenu))
 
 (provide 'init)
+
+;; Local Variables:
+;; byte-compile-warnings: (not unresolved free-vars)
+;; End:
+
 ;;; init.el ends here
