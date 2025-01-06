@@ -91,6 +91,8 @@
 ;; Flycheck
 (use-package flycheck
   :config (global-flycheck-mode))
+(use-package flycheck-rust
+  :init (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 
 ;; LSP
 (use-package lsp-mode
