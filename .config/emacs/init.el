@@ -65,7 +65,7 @@
 
 ;; Tree Sitter
 (use-package treesit-auto
-  :custom ((treesit-auto-install 'prompt)
+  :custom ((treesit-auto-install t)
            (treesit-auto-add-to-auto-mode-alist 'all))
   :config (global-treesit-auto-mode))
 
