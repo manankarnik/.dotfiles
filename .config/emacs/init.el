@@ -99,6 +99,15 @@
                 lsp-headerline-breadcrumb-enable nil
                 confirm-kill-processes nil)
   :hook (lsp-mode . lsp-enable-which-key-integration))
+(use-package lsp-ui
+  :custom ((lsp-ui-sideline-show-hover t)
+           (lsp-ui-sideline-show-code-actions t)
+           (lsp-ui-doc-position 'at-point))
+  :config
+  (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
+  (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
+  (keymap-set lsp-ui-mode-map "C-c k" #'lsp-ui-doc-glance)
+  (keymap-set lsp-ui-mode-map "C-c K" #'lsp-ui-doc-focus-frame))
 
 ;; Dart
 (use-package dart-mode
