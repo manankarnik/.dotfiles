@@ -91,8 +91,6 @@
 ;; Flycheck
 (use-package flycheck
   :config (global-flycheck-mode))
-(use-package flycheck-rust
-  :init (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 
 ;; LSP
 (use-package lsp-mode
@@ -110,7 +108,10 @@
             :hook (dart-mode . lsp)))
 
 ;; Rust
-(use-package rust-mode)
+(add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-ts-mode))
+(add-hook 'rust-ts-mode-hook #'lsp-deferred)
+(use-package flycheck-rust
+  :hook (flycheck-mode . flycheck-rust-setup))
 
 ;; YAML
 (use-package yaml-mode
