@@ -19,8 +19,8 @@
 (scroll-bar-mode 0)
 (column-number-mode)
 (display-time-mode)
-(setq display-line-numbers-type 'relative)
 (global-display-line-numbers-mode)
+(setq display-line-numbers-type 'relative)
 
 ;; Editing Preferences
 (delete-selection-mode)
@@ -60,8 +60,8 @@
 
 ;; Which Key
 (use-package which-key
-  :init (which-key-mode)
-  :config (setq which-key-idle-delay 0.5))
+  :custom (which-key-idle-delay 0.5)
+  :config (which-key-mode))
 
 ;; Tree Sitter
 (use-package treesit-auto
@@ -94,10 +94,10 @@
 
 ;; LSP
 (use-package lsp-mode
-  :commands lsp
-  :config (setq lsp-keymap-prefix "C-c l"
-                lsp-headerline-breadcrumb-enable nil
-                confirm-kill-processes nil)
+  :commands (lsp lsp-deferred)
+  :custom ((lsp-keymap-prefix "C-c l")
+           (lsp-headerline-breadcrumb-enable nil)
+           (confirm-kill-processes nil))
   :hook (lsp-mode . lsp-enable-which-key-integration))
 (use-package lsp-ui
   :custom ((lsp-ui-sideline-show-hover t)
@@ -111,10 +111,10 @@
 
 ;; Dart
 (use-package dart-mode
-  :config (use-package lsp-dart
-            :config (setq lsp-dart-dap-flutter-hot-reload-on-save t
-                          dap-auto-configure-features '((sessions locals breakpoints expressions tooltip)))
-            :hook (dart-mode . lsp)))
+  :hook (dart-mode . lsp-deferred))
+(use-package lsp-dart
+  :config (setq lsp-dart-dap-flutter-hot-reload-on-save t
+                dap-auto-configure-features '((sessions locals breakpoints expressions tooltip))))
 
 ;; Rust
 (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-ts-mode))
