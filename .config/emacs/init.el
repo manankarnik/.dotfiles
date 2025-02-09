@@ -123,7 +123,8 @@
 
 ;; Typst
 (unless (package-installed-p 'typst-ts-mode)
-  (package-vc-install "https://codeberg.org/meow_king/typst-ts-mode.git"))
+  (package-vc-install "https://codeberg.org/meow_king/typst-ts-mode.git")
+  (typst-ts-mc-install-grammar))
 (use-package typst-ts-mode
   :custom ((typst-ts-mode-enable-raw-blocks-highlight t)
            (typst-ts-mode-grammar-location (expand-file-name "tree-sitter/libtree-sitter-typst.so" user-emacs-directory)))
