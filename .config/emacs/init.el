@@ -64,12 +64,6 @@
   :custom (which-key-idle-delay 0.5)
   :config (which-key-mode))
 
-;; Tree Sitter
-(use-package treesit-auto
-  :custom ((treesit-auto-install t)
-           (treesit-auto-add-to-auto-mode-alist 'all))
-  :config (global-treesit-auto-mode))
-
 ;; Magit
 (use-package magit
   :commands magit-status
@@ -118,10 +112,10 @@
                 dap-auto-configure-features '((sessions locals breakpoints expressions tooltip))))
 
 ;; Rust
-(add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-ts-mode))
-(add-hook 'rust-ts-mode-hook #'lsp-deferred)
-(use-package flycheck-rust
-  :hook (flycheck-mode . flycheck-rust-setup))
+(use-package rust-mode
+  :config (use-package flycheck-rust
+            :hook (flycheck-mode . flycheck-rust-setup))
+  :hook (rust-mode . lsp-deferred))
 
 ;; YAML
 (use-package yaml-mode
