@@ -55,6 +55,7 @@
 
 ;; Ido & Smex
 (ido-mode t)
+(fido-mode t)
 (use-package smex)
 (global-set-key (kbd "M-x") 'smex)
 
@@ -134,6 +135,12 @@
            (typst-ts-mode-grammar-location (expand-file-name "tree-sitter/libtree-sitter-typst.so" user-emacs-directory)))
   :config (keymap-set typst-ts-mode-map "C-c C-c" #'typst-ts-tmenu))
 
+;; Solidity
+(use-package solidity-mode)
+
+;; JS
+(add-to-list 'auto-mode-alist '("\\.[c|m]js\\'" . js-mode))
+             
 (provide 'init)
 
 ;; Local Variables:
