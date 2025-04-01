@@ -1,34 +1,28 @@
 * {
-    color0: #191724;
-    color1: #1f1d2e;
-    color2: #26233a;
-    color3: #6e6a86;
-    color4: #908caa;
-    color5: #e0def4;
-    color6: #e0def4;
-    color7: #524f67;
-    color8: #eb6f92;
-    color9: #f6c177;
-    color11: #ebbcba;
-    color12: #31748f;
-    color13: #9ccfd8;
-    color14: #c4a7e7;
-    color15: #f6c177;
-    color16: #524f67;
+    background: #1a1b26;
+    color0: #15161e;
+    color1: #f7768e;
+    color2: #9ece6a;
+    color3: #e0af68;
+    color4: #7aa2f7;
+    color5: #bb9af7;
+    color6: #7dcfff;
+    color7: #a9b1d6;
+    color8: #414868;
 
-    background-color: var(color1);
-    foreground: var(color4);
+    background-color: @background;
+    foreground: #c0caf5;
 }
 
 window {
     border: 2px;
-    border-color: @color13;
+    border-color: @color6;
 }
 
 inputbar {
-    color: @color6;
+    color: @foreground;
     padding: 12px;
-    background-color: @color2;
+    background-color: @color0;
 }
 
 entry, prompt {
@@ -54,8 +48,8 @@ element {
 }
 
 element selected.normal {
-    background-color: @color2;
-    text-color: @color13;
+    background-color: @background;
+    text-color: @color4;
 }
 
 element-text, element-icon {
