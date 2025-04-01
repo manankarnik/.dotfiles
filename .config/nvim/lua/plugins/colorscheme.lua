@@ -1,9 +1,9 @@
 -- Set up a custom color scheme for a personalized editing experience.
 return {
-	"catppuccin/nvim",
-	name = "catppuccin",
+	"folke/tokyonight.nvim",
+	name = "tokyonight",
 	priority = 1000,
 	config = function()
-		vim.cmd.colorscheme("catppuccin")
+		vim.cmd.colorscheme("tokyonight-night")
 	end,
 }
