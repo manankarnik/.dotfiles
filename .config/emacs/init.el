@@ -38,8 +38,13 @@
 
 ;; Font and Appearance
 (set-face-attribute 'default nil :font "CodeNewRoman Nerd Font Mono" :height 150)
-(use-package catppuccin-theme
-  :config (load-theme 'catppuccin :no-confirm))
+(use-package doom-themes
+  :ensure t
+  :config
+  ;; Global settings (defaults)
+  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+        doom-themes-enable-italic t) ; if nil, italics is universally disabled
+  (load-theme 'doom-tokyo-night t))
 
 ;; Modeline
 (use-package doom-modeline
@@ -96,12 +101,11 @@
   :hook (lsp-mode . lsp-enable-which-key-integration))
 (use-package lsp-ui
   :custom ((lsp-ui-sideline-show-hover t)
-           (lsp-ui-sideline-show-code-actions t)
            (lsp-ui-doc-position 'at-point))
   :config
   (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
   (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
-  (keymap-set lsp-ui-mode-map "C-c k" #'lsp-ui-doc-glance)
+  (keymap-set lsp-ui-mode-map "C-c k" #'lsp-ui-doc-show)
   (keymap-set lsp-ui-mode-map "C-c K" #'lsp-ui-doc-focus-frame))
 
 ;; Dart
