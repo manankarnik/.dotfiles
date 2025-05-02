@@ -1,8 +1,11 @@
-#! /bin/sh
+#!/bin/sh
+
+# Launch Polybar
+$HOME/.config/polybar/launch.sh
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 
-bspc monitor -d I II III IV V VI VII VIII IX X
+bspc monitor -d 1 2 3 4 5
 
 bspc config border_width 2
 bspc config window_gap 10
@@ -19,3 +22,5 @@ bspc config presel_feedback_color "#15161e"
 bspc rule -a Chromium desktop='^2'
 bspc rule -a discord desktop='^3'
 bspc rule -a matplotlib state=floating
+bspc rule -a pavucontrol state=floating rectangle=473x288+1431+54 focus=off follow=off sticky=on
+bspc rule -a Gsimplecal state=floating rectangle=250x188+1654+52 focus=off follow=off sticky=on
