@@ -23,8 +23,9 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz", opts) -- Scroll down and center cursor
 vim.keymap.set("n", "n", "nzzzv", opts) -- Next search result centered
 vim.keymap.set("n", "N", "Nzzzv", opts) -- Previous search result centered
 
--- Open diagnostic quickfix list
-vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+-- Diagnostics
+vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" }) -- Open diagnostic quickfix list
+vim.keymap.set("n", "<C-k>", vim.diagnostic.open_float, { desc = "Open [D]iagnostics float" }) -- Open diagnostics float
 
 -- Miscellaneous
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>") -- Clear search highlights
