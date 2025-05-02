@@ -1,3 +1,4 @@
+vim.cmd("colorscheme daub")
 require("core.autocmd")
 require("core.keymaps")
 require("core.options")

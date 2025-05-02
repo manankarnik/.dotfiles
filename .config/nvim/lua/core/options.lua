@@ -18,7 +18,7 @@ local options = {
 	cursorlineopt = "number", -- Highlight only the line number of the current line
 	wrap = true,              -- Enable line wrapping for long lines
 	breakindent = true,       -- Enable indenting for wrapped lines
-	scrolloff = 10,           -- Keep 10 lines visible above and below the cursor
+	scrolloff = 2,            -- Keep 2 lines visible above and below the cursor
 	guicursor = "",           -- Use the default cursor style
 
 	-- File handling options
