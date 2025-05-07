@@ -27,5 +27,22 @@ vim.keymap.set("n", "N", "Nzzzv", opts) -- Previous search result centered
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" }) -- Open diagnostic quickfix list
 vim.keymap.set("n", "<C-k>", vim.diagnostic.open_float, { desc = "Open [D]iagnostics float" }) -- Open diagnostics float
 
+-- Zen Mode
+vim.keymap.set("n", "<leader>z", function()
+	vim.cmd("set invshowmode invshowcmd invruler")
+	if vim.go.signcolumn == "no" then
+		vim.cmd("set signcolumn=yes")
+	else
+		vim.cmd("set signcolumn=no")
+	end
+	if vim.go.laststatus == 0 then
+		vim.cmd("set ls=2")
+	else
+		vim.cmd("set ls=0")
+	end
+end, {
+	desc = "Toggle [Z]en Mode",
+}) -- Toggle Zen Mode
+
 -- Miscellaneous
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>") -- Clear search highlights
